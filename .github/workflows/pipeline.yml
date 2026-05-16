@@ -1,0 +1,29 @@
+name: Preprocessing Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Setiap kali kamu push ke branch main, robot akan bekerja
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Preprocessing Script
+        run: |
+          # Perintah ini menjalankan skripmu. 
+          # Pastikan path-nya sesuai dengan struktur foldermu di GitHub.
+          python preprocessing/automate_Lathif_Ramadhan.py
